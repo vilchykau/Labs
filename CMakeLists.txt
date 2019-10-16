@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(Coursera)
+#git remote add origin https://github.com/Amigo010/Labs.git
 #git push -u origin master
 set(CMAKE_CXX_STANDARD 17)
 add_subdirectory(linkedList)
