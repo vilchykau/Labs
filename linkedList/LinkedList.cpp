@@ -17,9 +17,7 @@ LinkedList::LinkedList(std::initializer_list<int> list): first(nullptr), pLast(&
 }
 
 LinkedList::~LinkedList() {
-    while (!IsEmpty()){
-        PopFront();
-    }
+    Erase();
 }
 
 void LinkedList::PopFront(){
@@ -60,5 +58,9 @@ void LinkedList::Clear(){
         first = new_first;
     }
     pLast = &first;
+}
+
+void LinkedList::Erase() {
+    Clear();
 }
 

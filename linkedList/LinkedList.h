@@ -35,6 +35,8 @@ public:
         return first;
     }
 private:
+    void Erase();
+
     Element* first;
     Element** pLast;
 
