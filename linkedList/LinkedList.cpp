@@ -16,13 +16,35 @@ LinkedList::LinkedList(std::initializer_list<int> list): first(nullptr), pLast(&
     }
 }
 
-/*LinkedList::LinkedList(const LinkedList& other){
+LinkedList::LinkedList(const LinkedList& other):first(nullptr), pLast(&first){
     Element* e = other.first;
-
-};*/
+    while(e){
+        PushBack(e->value);
+        e = e->next;
+    }
+};
 
 LinkedList::~LinkedList() {
     Erase();
+}
+
+LinkedList& LinkedList::operator=(const LinkedList& list){
+    if(this != &list){
+        LinkedList temp(list);
+        Swap(temp);
+    }
+    return *this;
+}
+
+void LinkedList::Swap(LinkedList& list){
+    Element* f_ = list.first;
+    Element** l_ = list.pLast;
+
+    list.first = this->first;
+    list.pLast = this->pLast;
+
+    this->pLast = l_;
+    this->first = f_;
 }
 
 void LinkedList::PopFront(){

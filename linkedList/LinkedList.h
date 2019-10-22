@@ -21,9 +21,12 @@ class LinkedList{
 public:
     LinkedList();
     LinkedList(std::initializer_list<int> list);
-    //LinkedList(const LinkedList& other);
+    LinkedList(const LinkedList& other);
     ~LinkedList();
 
+    LinkedList& operator=(const LinkedList& list);
+
+    void Swap(LinkedList& list);
     bool IsEmpty(){ return !first;};
     void PopFront();
     void PushBack(int add_value);
@@ -43,8 +46,6 @@ private:
 
     Element* first;
     Element** pLast;
-
-    Element *now;
 };
 
 

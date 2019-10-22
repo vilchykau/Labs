@@ -5,13 +5,13 @@
 #import "LinkedList.h"
 
 int main(){
-    LinkedList list;
-    list.PushFront(77);
-    list.PushBack(5);
-    list.PushBack(6);
-    list.PushFront(9);
-    list.PushBack(7);
+    LinkedList list = {1, 2, 3, 4, 5};
 
+    LinkedList L2(list);
+    list.PopFront();
 
+    L2.PrintList(std::cout);
+    std::cout << '\n';
     list.PrintList(std::cout);
+    //std::cout << list;
 }
