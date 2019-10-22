@@ -1,55 +1,35 @@
 //
 // Created by stas on 11.10.19.
 //
-
+#include <fstream>
+#include <vector>
 #include <iostream>
 
-template <typename T>
-class DArray{
-public:
-    DArray(int new_size){
-        size = new_size;
-        array = new T[size];
+void find(int n,int pos, int number, std::vector<bool>& map, std::vector<int>& answs){
+    if(pos == 0){
+        answs.push_back(number);
+        return;
     }
 
-    ~DArray(){
-        delete[] array;
-    }
-
-    int& operator[](int i){
-        return array[i];
-    }
-
-    int GetSize(){
-        return size;
-    }
-
-    int CopyTo(T* target, int start, int len){
-        for(int i = start; i < start + len; ++i){
-            target[i - start] = array[i];
+    for(int i = (pos == n ? 1 : 0); i < 10; ++i){
+        if(!map[i]) {
+            map[i] = 1;
+            find(n, pos - 1, i + number * 10, map, answs);
+            map[i] = 0;
         }
     }
-
-    void Fill(T f){
-        for(int i = 0; i < size; ++i){
-            array[i] = f;
-        }
-    }
-
-private:
-    int size;
-    T* array;
-};
+}
 
 int main(){
-    DArray<int> tt(5);
-    DArray<int> t2(10);
+    int n;
+    std::cin >> n;
 
-    tt.CopyTo(&t2[3], 4, 2);
+    std::vector<int> answs;
+    std::vector<bool> map(10, 0);
 
-    for(int i = 0;i < 10; ++i){
-        std::cout << tt[i] << ' ';
+    find(n, n, 0, map, answs);
+
+    for(auto e : answs){
+        std::cout << e << '\n';
     }
-
-    return 0;
 }
