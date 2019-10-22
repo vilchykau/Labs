@@ -48,7 +48,6 @@ void LinkedList::PrintList(std::ostream& out_stream){
         out_stream << now_element->value << ' ';
         now_element = now_element->next;
     }
-    out_stream << '\n';
 }
 
 void LinkedList::Clear(){

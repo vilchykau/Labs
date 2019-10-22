@@ -43,6 +43,11 @@ private:
     Element *now;
 };
 
+std::ostream& operator<<(std::ostream& stream, LinkedList linkedList){
+    linkedList.PrintList(stream);
+    return stream;
+}
+
 
 
 #endif //LABS_LINKEDLIST_H
