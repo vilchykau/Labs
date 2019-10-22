@@ -36,6 +36,14 @@ LinkedList& LinkedList::operator=(const LinkedList& list){
     return *this;
 }
 
+int& LinkedList::operator[](const int pos_){
+    Element* pos = first;
+    for(int i = 1; i < pos_; ++i){
+        pos = pos->next;
+    }
+    return pos->value;
+}
+
 void LinkedList::Swap(LinkedList& list){
     Element* f_ = list.first;
     Element** l_ = list.pLast;

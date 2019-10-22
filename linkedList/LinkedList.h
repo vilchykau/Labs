@@ -25,6 +25,7 @@ public:
     ~LinkedList();
 
     LinkedList& operator=(const LinkedList& list);
+    int& operator[](const int pos_);
 
     void Swap(LinkedList& list);
     bool IsEmpty(){ return !first;};
