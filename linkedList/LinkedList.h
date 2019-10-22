@@ -5,7 +5,7 @@
 #ifndef LABS_LINKEDLIST_H
 #define LABS_LINKEDLIST_H
 
-#include <ostream>
+#include <iostream>
 
 struct Element{
     int value;
@@ -21,6 +21,7 @@ class LinkedList{
 public:
     LinkedList();
     LinkedList(std::initializer_list<int> list);
+    //LinkedList(const LinkedList& other);
     ~LinkedList();
 
     bool IsEmpty(){ return !first;};
@@ -28,8 +29,11 @@ public:
     void PushBack(int add_value);
     void PushFront(int add_value);
     int Front() const {return first->value;}
-    void PrintList(std::ostream& out_stream);
+    void PrintList(std::ostream& out_stream) const;
     void Clear();
+    void Insert_A(int value);
+    void InvertPreLast(int value);
+    void Insert(int value, int pos);
 
     Element* GetFirstElement(){
         return first;
@@ -42,11 +46,6 @@ private:
 
     Element *now;
 };
-
-std::ostream& operator<<(std::ostream& stream, LinkedList linkedList){
-    linkedList.PrintList(stream);
-    return stream;
-}
 
 
 
