@@ -38,6 +38,7 @@ public:
     void Insert_A(int value);
     void InvertPreLast(int value);
     void Insert(int value, int pos);
+    int Size();
 
     Element* GetFirstElement(){
         return first;

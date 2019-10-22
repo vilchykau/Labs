@@ -129,3 +129,13 @@ void LinkedList::Insert(int value, int pos){
     pre->next = element;
 }
 
+int LinkedList::Size(){
+    int size = 0;
+    Element *e = first;
+    while (e){
+        e = e->next;
+        ++size;
+    }
+    return size;
+}
+
