@@ -7,11 +7,8 @@
 int main(){
     LinkedList list = {1, 2, 3, 4, 5};
 
-    LinkedList L2(list);
-    list.PopFront();
+    list[0] = 99;
 
-    L2.PrintList(std::cout);
-    std::cout << '\n';
     list.PrintList(std::cout);
-    //std::cout << list;
+    std::cout << '\n' << list.Size() << std::endl;
 }
