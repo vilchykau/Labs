@@ -1,0 +1,1 @@
+add_executable(HashMap_Test main.cpp)
