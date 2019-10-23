@@ -12,14 +12,12 @@
 int main(){
     BinaryTree<int> tree;
 
-    std::ifstream file("input.txt");
+    tree.Add(6);
+    tree.Add(4);
+    tree.Add(5);
 
-    int value;
+    tree.Remove(4);
 
-    while (file >> value){
-        tree.Add(value);
-    }
-
-    std::cout << tree.ToString();
+    std::cout << tree << "\n" << tree.IsContains(0);
     return 0;
 }
