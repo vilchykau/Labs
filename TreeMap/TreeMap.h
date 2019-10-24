@@ -16,6 +16,7 @@ struct TreeNode{
     TreeNode* right;
 
     explicit TreeNode(T_compare tCompare, T_container tContainer):compare(tCompare), container(tContainer){};
+    explicit TreeNode(T_compare tCompare):compare(tCompare){};
 };
 
 template <typename T_compare, typename T_container>
@@ -23,7 +24,7 @@ class TreeMap {
 public:
     TreeMap():root(nullptr){};
 
-    void Set(T_compare comp, T_container value){
+    void Set(const T_compare& comp, T_container& value){
         auto p = &root;
 
         while(*p){
@@ -39,7 +40,7 @@ public:
         if(*p){
             (*p)->container = value;
         }else{
-            (*p) = new TreeNode<T_compare, T_container>(comp, value);
+            (*p) = new TreeNode<T_compare, T_container>(comp);
         }
     }
 
@@ -47,12 +48,31 @@ public:
         auto p = &root;
 
         while(*p){
-            if((*p)->compare > index){
-                p = &(*p)->left;
-            }else if((*p)->compare < index){
+            if((*p)->compare < index){
                 p = &(*p)->right;
-            } else{
+            }else if((*p)->compare == index){
                 break;
+            } else{
+                p = &(*p)->left;
+            }
+        }
+
+        if(!(*p)){
+            (*p) = new TreeNode<T_compare, T_container>(index, T_container());
+        }
+        return (*p)->container;
+    }
+
+    T_container Get(const T_compare& index){
+        auto p = &root;
+
+        while(*p){
+            if((*p)->compare < index){
+                p = &(*p)->right;
+            }else if((*p)->compare == index){
+                break;
+            } else{
+                p = &(*p)->left;
             }
         }
 
@@ -66,6 +86,21 @@ public:
         std::vector<std::pair<T_compare, T_container>> pairs;
         GetSubPairs(pairs, root);
         return pairs;
+    }
+
+    bool IsContains(T_compare key){
+        auto element = root;
+        while(element){
+            if(element->compare > key){
+                element = element->left;
+            }else if(element->compare < key){
+                element = element->right;
+            }else{
+                break;
+            }
+        }
+
+        return element;
     }
 
 
