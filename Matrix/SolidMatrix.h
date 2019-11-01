@@ -17,6 +17,10 @@ public:
         array = new T[n*m];
     }
 
+    ~SolidMatrix(){
+        delete[] array;
+    }
+
     T Get(int in_n, int in_m) const override {
         assert(in_n < n);
         assert(in_m < m);
@@ -30,6 +34,7 @@ public:
     T*operator[](int x) override {
         return &array[x* m];
     }
+
 
 private:
     T* array;
