@@ -7,8 +7,7 @@
 int main(){
     LinkedList list = {1, 2, 3, 4, 5};
 
-    list[0] = 99;
-
+    list.Invert();
     list.PrintList(std::cout);
     std::cout << '\n' << list.Size() << std::endl;
 }

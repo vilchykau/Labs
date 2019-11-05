@@ -40,6 +40,24 @@ public:
     void Insert(int value, int pos);
     int Size();
 
+    void Invert(){
+        if(first){
+            auto prev = first;
+            auto p = first->next;
+
+            prev->next = nullptr;
+
+            while (p){
+                auto temp = p->next;
+                p->next = prev;
+                prev = p;
+                p = temp;
+            }
+            pLast = &first->next;
+            first = prev;
+        }
+    }
+
     Element* GetFirstElement(){
         return first;
     }
