@@ -37,11 +37,11 @@ public:
             }
         }
 
-        if(*p){
-            (*p)->container = value;
-        }else{
+        if(!(*p)){
             (*p) = new TreeNode<T_compare, T_container>(comp);
         }
+
+        (*p)->container = value;
     }
 
     T_container& operator[](const T_compare& index){
