@@ -111,5 +111,6 @@ std::istream& operator>>(std::istream& stream, Rational& rational){
 }
 
 int main(){
+    std::cout << Rational(1,2) + Rational(1, 3);
     return 0;
 }
