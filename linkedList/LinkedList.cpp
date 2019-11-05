@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "LinkedList.h"
+#include "LinkedListElement.h"
 
 LinkedList::LinkedList() {
     first = nullptr;
@@ -17,7 +18,7 @@ LinkedList::LinkedList(std::initializer_list<int> list): first(nullptr), pLast(&
 }
 
 LinkedList::LinkedList(const LinkedList& other):first(nullptr), pLast(&first){
-    Element* e = other.first;
+    Element<int>* e = other.first;
     while(e){
         PushBack(e->value);
         e = e->next;
@@ -37,7 +38,7 @@ LinkedList& LinkedList::operator=(const LinkedList& list){
 }
 
 int& LinkedList::operator[](const int pos_){
-    Element* pos = first;
+    Element<int>* pos = first;
     for(int i = 1; i < pos_; ++i){
         pos = pos->next;
     }
@@ -45,8 +46,8 @@ int& LinkedList::operator[](const int pos_){
 }
 
 void LinkedList::Swap(LinkedList& list){
-    Element* f_ = list.first;
-    Element** l_ = list.pLast;
+    Element<int>* f_ = list.first;
+    Element<int>** l_ = list.pLast;
 
     list.first = this->first;
     list.pLast = this->pLast;
@@ -56,18 +57,18 @@ void LinkedList::Swap(LinkedList& list){
 }
 
 void LinkedList::PopFront(){
-    Element* new_first = first->next;
+    Element<int>* new_first = first->next;
     delete first;
     first = new_first;
 }
 
 void LinkedList::PushBack(int add_value){
-    *pLast = new Element(add_value);
+    *pLast = new Element<int>(add_value);
     pLast = &(*pLast)->next;
 }
 
 void LinkedList::PushFront(int add_value){
-    Element *add_element = new Element(add_value);
+    Element<int> *add_element = new Element<int>(add_value);
     add_element->next = first;
     first = add_element;
 
@@ -77,7 +78,7 @@ void LinkedList::PushFront(int add_value){
 }
 
 void LinkedList::PrintList(std::ostream& out_stream) const {
-    Element* now_element = first;
+    Element<int>* now_element = first;
 
     while (now_element){
         out_stream << now_element->value << ' ';
@@ -87,7 +88,7 @@ void LinkedList::PrintList(std::ostream& out_stream) const {
 
 void LinkedList::Clear(){
     while (first){
-        Element* new_first = first->next;
+        Element<int>* new_first = first->next;
         delete first;
         first = new_first;
     }
@@ -101,37 +102,37 @@ void LinkedList::Erase() {
 
 void LinkedList::InvertPreLast(int value){
     if(!first->next){PushFront(value);return;}
-    Element* pre = first;
+    Element<int>* pre = first;
 
     while (pre->next->next){
         pre = pre->next;
     }
 
-    Element* new_element = new Element(value);
+    Element<int>* new_element = new Element<int>(value);
     new_element->next = pre->next;
     pre->next = new_element;
 }
 
 void LinkedList::Insert_A(int value){
-    Element* element = new Element(value);
+    Element<int>* element = new Element<int>(value);
     element->next = first->next;
     first->next = element;
 }
 
 void LinkedList::Insert(int value, int pos){
-    Element* pre = first;
+    Element<int>* pre = first;
     for(int i = 1; i < pos; ++i){
         pre = pre->next;
     }
 
-    Element* element = new Element(value);
+    Element<int>* element = new Element<int>(value);
     element->next = pre->next;
     pre->next = element;
 }
 
 int LinkedList::Size(){
     int size = 0;
-    Element *e = first;
+    Element<int>* e = first;
     while (e){
         e = e->next;
         ++size;

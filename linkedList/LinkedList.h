@@ -6,16 +6,9 @@
 #define LABS_LINKEDLIST_H
 
 #include <iostream>
-
-struct Element{
-    int value;
-    Element* next;
-
-    explicit Element(int new_value){
-        value = new_value;
-        next = nullptr;
-    }
-};
+#include "../Iterator/IIterator.h"
+#include "../Iterator/LinkedListIterator.h"
+#include "LinkedListElement.h"
 
 class LinkedList{
 public:
@@ -58,14 +51,18 @@ public:
         }
     }
 
-    Element* GetFirstElement(){
+    IIterator<int>* GetIterator(){
+        return new LinkedListIterator<int>(first);
+    }
+
+    Element<int>* GetFirstElement(){
         return first;
     }
 private:
     void Erase();
 
-    Element* first;
-    Element** pLast;
+    Element<int>* first;
+    Element<int>** pLast;
 };
 
 
