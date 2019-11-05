@@ -4,10 +4,17 @@
 #include <iostream>
 #import "LinkedList.h"
 
-int main(){
-    LinkedList list = {1, 2, 3, 4, 5};
+#include "../Iterator/Iterator.h"
 
-    list.Invert();
-    list.PrintList(std::cout);
-    std::cout << '\n' << list.Size() << std::endl;
+using namespace std;
+
+int main(){
+    LinkedList list;
+    list.PushBack(5);
+    list.PushBack(1);
+    Iterator iterator(list.GetIterator());
+
+    while (iterator.HasNext()){
+        std::cout << "F: " << iterator.Next() << '\n';
+    }
 }
