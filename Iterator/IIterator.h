@@ -7,6 +7,7 @@
 
 template <typename T>
 class IIterator{
+public:
     bool HasNext(){ return false;};
     T Next(){ return T();};
 };

@@ -9,6 +9,7 @@
 
 template <typename T>
 class Iterator {
+public:
     Iterator(IIterator<T>* iterator){
         this->iterator = iterator;
     }
