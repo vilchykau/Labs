@@ -5,18 +5,14 @@
 #ifndef LABS_BINARYTREE_H
 #define LABS_BINARYTREE_H
 
-template <typename T>
-struct TreeElement{
-    T value;
-    TreeElement* left;
-    TreeElement* right;
-
-};
+#include <string>
+#include "TreeElement.h"
 
 
 template <typename T>
 class BinaryTree{
 public:
+
     BinaryTree():root(nullptr){};
 
     void Add(T new_value){
@@ -70,7 +66,12 @@ public:
         }
     }
 
+    TreeElement<T>* GetRoot(){
+        return root;
+    }
+
 private:
+
     std::string ToString(TreeElement<T>* element) const{
         std::string out = "";
 
@@ -106,13 +107,6 @@ private:
 
     TreeElement<T>* root;
 };
-
-template<typename T>
-std::ostream& operator<<(std::ostream& ostream, const BinaryTree<T>& tree){
-    ostream << tree.ToString();
-    return ostream;
-}
-
 
 
 #endif //LABS_BINARYTREE_H
