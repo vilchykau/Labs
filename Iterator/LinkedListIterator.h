@@ -23,7 +23,7 @@ public:
     }
 
     bool HasNext() override {
-        return true;
+        return now;
     };
 
     T Next() override {
