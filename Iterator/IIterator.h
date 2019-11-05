@@ -8,8 +8,9 @@
 template <typename T>
 class IIterator{
 public:
-    bool HasNext(){ return false;};
-    T Next(){ return T();};
+    virtual bool HasNext(){ return false;};
+
+    virtual T Next(){ return T();};
 };
 
 #endif //LABS_IITERATOR_H
