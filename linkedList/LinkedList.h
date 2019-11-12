@@ -6,8 +6,6 @@
 #define LABS_LINKEDLIST_H
 
 #include <iostream>
-#include "../Iterator/IIterator.h"
-#include "../Iterator/LinkedListIterator.h"
 #include "LinkedListElement.h"
 
 class LinkedList{
@@ -51,8 +49,14 @@ public:
         }
     }
 
-    IIterator<int>* GetIterator(){
-        return new LinkedListIterator<int>(first);
+    int Middle(){
+        auto p1 = first;
+        auto p2 = first;
+        while (p2 && p2->next){
+            p1 = p1->next;
+            p2 = p2->next->next;
+        }
+        return p1->value;
     }
 
     Element<int>* GetFirstElement(){
