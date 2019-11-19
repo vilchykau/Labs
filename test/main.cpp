@@ -2,20 +2,21 @@
 // Created by stas on 11.10.19.
 //
 #include <iostream>
+#include <string.h>
+#include <cctype>
 
-bool IsPolly(int a){
-    int b = 0;
-    int a_ = a;
-    while(a_ > 0){
-        b = a_ % 10 + b * 10;
-        a_/= 10;
-    }
-    return b == a;
-}
+#include "../Iterator/Iterator.h"
+#include "../linkedList/LinkedList.h"
 
+using namespace std;
 
 int main(){
-    int num;
-    std::cin >> num;
-    std::cout << IsPolly(num);
+    LinkedList list;
+    list.PushBack(5);
+    list.PushBack(1);
+    Iterator iterator(list.GetIterator());
+
+    while (iterator.HasNext()){
+        std::cout << iterator.Next() << '\n';
+    }
 }

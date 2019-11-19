@@ -18,6 +18,5 @@ int main(){
 
     tree.Remove(4);
 
-    std::cout << tree << "\n" << tree.IsContains(0);
     return 0;
 }

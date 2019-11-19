@@ -1,1 +1,0 @@
-add_executable(LAB_10 main.cpp)
